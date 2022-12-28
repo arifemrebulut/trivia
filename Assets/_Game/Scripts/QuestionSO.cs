@@ -7,10 +7,9 @@ namespace Trivia
     {
         public string questionText;
 
-        public string answer0;
-        public string answer1;
-        public string answer2;
-        public string answer3;
+        public string[] answers = new string[4];
+
+        public string category;
 
         public string correctAnswer;
     }
