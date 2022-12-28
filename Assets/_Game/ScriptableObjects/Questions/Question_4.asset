@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 823c6ca7bbedc459581847a6c6fcc081, type: 3}
-  m_Name: Question_6
+  m_Name: Question_4
   m_EditorClassIdentifier: 
-  questionText: "Hangisi bir m\xFCzik grubu de\u011Fildir?"
-  answer0: A) Pink Floyd
-  answer1: B) Queen
-  answer2: C) Metallica
-  answer3: D) Tarkan
-  correctAnswer: D
+  questionText: "Hangisi T\xFCrkiye'nin ba\u015Fkenti de\u011Fildir?"
+  answers:
+  - "A) \u0130stanbul"
+  - B) Ankara
+  - "C) \u0130zmir"
+  - D) Bursa
+  category: general-culture
+  correctAnswer: C

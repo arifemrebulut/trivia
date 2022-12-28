@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 823c6ca7bbedc459581847a6c6fcc081, type: 3}
-  m_Name: ScriptableObjects
+  m_Name: Question_5
   m_EditorClassIdentifier: 
   questionText: "Hangisi Osmanl\u0131 Padi\u015Fah\u0131 de\u011Fildir?"
-  answer0: A) Fatih Sultan Mehmet
-  answer1: "B) S\xFCleyman Kanuni"
-  answer2: "C) Abd\xFClhamit II"
-  answer3: "D) K\xF6sem Sultan"
+  answers:
+  - A) Fatih Sultan Mehmet
+  - "B) S\xFCleyman Kanuni"
+  - "C) Abd\xFClhamit II"
+  - "D) K\xF6sem Sultan"
+  category: history
   correctAnswer: D

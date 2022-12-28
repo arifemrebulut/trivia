@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686314b4e6be04a148021ff52d861e34, type: 3}
+  m_Name: QuestionsConfiguration
+  m_EditorClassIdentifier: 
+  categories:
+  - categoryName: general-culture
+    questions:
+    - {fileID: 11400000, guid: b07b6a5c4b5f54616af6f517c8f3e173, type: 2}
+    - {fileID: 11400000, guid: 081c2cc4156554aefa37c370cc81704d, type: 2}
+    - {fileID: 11400000, guid: ce0e6b652d72a47d795da7c7cd14ef85, type: 2}
+  - categoryName: history
+    questions:
+    - {fileID: 11400000, guid: 3e2f556a4ef7c43978f80c0c60d1c829, type: 2}
+    - {fileID: 11400000, guid: a6907c8e9a6f9428bb857ee9b5500491, type: 2}
+    - {fileID: 11400000, guid: dbd1e3c6cca7040eb991a5c8289a7ef2, type: 2}
+  - categoryName: music
+    questions:
+    - {fileID: 11400000, guid: 7d768fc53cf1c45c38244d3a7996ef54, type: 2}
+    - {fileID: 11400000, guid: c4cd60576fb90433eb380710dc0aac6c, type: 2}
+  - categoryName: cinema
+    questions:
+    - {fileID: 11400000, guid: 3af3d8352ca4f4b2488832462c6d2032, type: 2}
+    - {fileID: 11400000, guid: 881b5d5adfe264273a83fedbb4bdd9ac, type: 2}
