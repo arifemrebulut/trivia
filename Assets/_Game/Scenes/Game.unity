@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 91942318}
+  - component: {fileID: 91942319}
   m_Layer: 5
   m_Name: LeaderboardMenu
   m_TagString: Untagged
@@ -160,6 +161,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &91942319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91942317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d941036707d04440da29ce52f5433427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 1430498370}
 --- !u!1 &159263121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9ea73606091445588bb76cd093efac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManagerSettings:
+    canvas: {fileID: 909647827}
+    startingMenu: {fileID: 1916617350}
 --- !u!1 &1916617348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1916617349}
+  - component: {fileID: 1916617350}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1559,6 +1577,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1916617350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916617348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b00882019064dd699b82c0eae86bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playButton: {fileID: 1297407229}
+  leaderBoardButton: {fileID: 1206108212}
 --- !u!1 &2102112171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102112172}
+  - component: {fileID: 2102112173}
   m_Layer: 5
   m_Name: GameMenu
   m_TagString: Untagged
@@ -1596,3 +1629,16 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2102112173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102112171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59743c47862f742859f044ab63490edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 987472242}
