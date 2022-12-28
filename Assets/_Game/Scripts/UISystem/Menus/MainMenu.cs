@@ -10,7 +10,7 @@ namespace Trivia
 
         private void Start()
         {
-            playButton.onClick.AddListener(() => uiManager.SwitchMenu<GameMenu>());
+            playButton.onClick.AddListener(() => uiManager.SwitchMenu<WheelMenu>());
             leaderBoardButton.onClick.AddListener(() => uiManager.SwitchMenu<LeaderboardMenu>()); 
         }
     }

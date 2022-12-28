@@ -1,20 +1,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Zenject;
 
 namespace Trivia
 {
-    public class QuestionManager
+    public class QuestionManager : IInitializable, IDisposable
     {
         private Settings settings;
+
+        private QuestionSO currentQuestion;
+
+        public List<string> Categories { get; private set; }
 
         public QuestionManager(Settings _settings)
         {
             settings = _settings;
 
-            string randomCategoryName = settings.configurationSO.categories[UnityEngine.Random.Range(0, 4)].categoryName;
+            Categories = new List<string>();
+            settings.configurationSO.categories.ForEach(x => Categories.Add(x.categoryName));
+        }
 
-            LoadNextQuestion(randomCategoryName);
+        public void Initialize()
+        {
+            EventManager.LoadNewQuestionEvent += LoadNextQuestion;
+        }
+
+        public void Dispose()
+        {
+            EventManager.LoadNewQuestionEvent -= LoadNextQuestion;
         }
 
         public void LoadNextQuestion(string _categoryName)
@@ -24,6 +38,8 @@ namespace Trivia
             if (question != null)
             {
                 settings.questionUI.UpdataUI(question);
+
+                currentQuestion = question;
             }
         }
 
@@ -48,5 +64,6 @@ namespace Trivia
             public QuestionUI questionUI;
             public QuestionsConfigurationSO configurationSO;
         }
+
     }
 }

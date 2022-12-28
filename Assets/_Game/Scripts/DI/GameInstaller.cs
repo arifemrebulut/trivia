@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -10,8 +11,14 @@ namespace Trivia
 
         public override void InstallBindings()
         {
-            Container.Bind<UIManager>().AsSingle().WithArguments(uiManagerSettings);
-            Container.Bind<QuestionManager>().AsSingle().WithArguments(quesitonManagerSettings).NonLazy();
+            Container.Bind<UIManager>()
+                .AsSingle()
+                .WithArguments(uiManagerSettings);
+
+            Container.BindInterfacesAndSelfTo<QuestionManager>()
+                .AsSingle()
+                .WithArguments(quesitonManagerSettings)
+                .NonLazy();
         }
     }
 }
