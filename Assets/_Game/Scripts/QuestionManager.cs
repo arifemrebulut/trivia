@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using Zenject;
+using UnityEngine;
 
 namespace Trivia
 {
@@ -9,8 +10,8 @@ namespace Trivia
     {
         private Settings settings;
 
-        private QuestionSO currentQuestion;
-
+        public QuestionSO CurrentQuestion { get; private set; }
+        public string CurrentCategory { get; private set; }
         public List<string> Categories { get; private set; }
 
         public QuestionManager(Settings _settings)
@@ -23,28 +24,33 @@ namespace Trivia
 
         public void Initialize()
         {
-            EventManager.LoadNewQuestionEvent += LoadNextQuestion;
+            EventManager.LoadNewQuestionEvent += LoadNewQuestion;
         }
 
         public void Dispose()
         {
-            EventManager.LoadNewQuestionEvent -= LoadNextQuestion;
+            EventManager.LoadNewQuestionEvent -= LoadNewQuestion;
         }
 
-        public void LoadNextQuestion(string _categoryName)
+        private void LoadNewQuestion(string _categoryName)
         {
             QuestionSO question = GetQuestionForCategory(_categoryName);
 
             if (question != null)
             {
-                settings.questionUI.UpdataUI(question);
+                CurrentQuestion = question;
 
-                currentQuestion = question;
+                EventManager.NewQuestionLoaded(CurrentQuestion);
             }
         }
 
-        public QuestionSO GetQuestionForCategory(string _categoryName)
+        private QuestionSO GetQuestionForCategory(string _categoryName)
         {
+            if (Categories.Contains(_categoryName))
+            {
+                CurrentCategory = _categoryName;
+            }
+
             List<QuestionSO> questionsInCategory = settings.configurationSO.categories
                 .FirstOrDefault(category => category.categoryName == _categoryName).questions;
 
