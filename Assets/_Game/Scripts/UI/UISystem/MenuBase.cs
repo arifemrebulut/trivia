@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Trivia
 {
-    public abstract class Menu : MonoBehaviour
+    public abstract class MenuBase : MonoBehaviour
     {
         [Inject]
         protected UIManager uiManager;

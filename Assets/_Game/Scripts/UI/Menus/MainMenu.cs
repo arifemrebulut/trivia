@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Trivia
 {
-    public class MainMenu : Menu
+    public class MainMenu : MenuBase
     {
         [SerializeField] private Button playButton;
         [SerializeField] private Button leaderBoardButton;

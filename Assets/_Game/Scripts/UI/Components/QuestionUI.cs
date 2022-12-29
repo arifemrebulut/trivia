@@ -108,14 +108,26 @@ namespace Trivia
         {
             EventManager.ScoreLost(5);
 
-            TweenBanner(incorrectBanner.transform, () => uiManager.SwitchMenu<WheelMenu>(false), 0.5f);
+            TweenBanner(incorrectBanner.transform, () =>
+                {
+                    uiManager.SwitchMenu<WheelMenu>(false);
+
+                    ResetAnswers();
+                },
+                0.5f);
         }
 
         private void OnTimeOut()
         {
             EventManager.ScoreLost(3);
 
-            TweenBanner(timeOutBanner.transform, () => uiManager.SwitchMenu<WheelMenu>(false), 0.5f);
+            TweenBanner(timeOutBanner.transform, () =>
+                {
+                uiManager.SwitchMenu<WheelMenu>(false);
+
+                ResetAnswers();
+                },
+                0.5f);
         }
 
         private void TweenBanner(Transform banner, Action onComplete = null, float onCompleteDelay = 0f)
@@ -135,6 +147,14 @@ namespace Trivia
             {
                 onComplete?.Invoke();
             });
+        }
+
+        private void ResetAnswers()
+        {
+            for (int i = 0; i < answerUIComponents.Length; i++)
+            {
+                answerUIComponents[i].Reset();
+            }
         }
     }
 }

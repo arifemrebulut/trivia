@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Trivia
 {
-    public class GameMenu : Menu
+    public class GameMenu : MenuBase
     {
         [SerializeField] private TextMeshProUGUI scoreTMP;
 

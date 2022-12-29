@@ -9,30 +9,30 @@ namespace Trivia
     {
         private Settings settings;
 
-        private List<Menu> menuList;
-        private Menu lastActiveMenu;
+        private List<MenuBase> menuList;
+        private MenuBase lastActiveMenu;
 
-        private readonly Stack<Menu> menuHistory = new Stack<Menu>();
+        private readonly Stack<MenuBase> menuHistory = new Stack<MenuBase>();
 
         public UIManager(Settings _settings)
         {
             settings = _settings;
 
-            menuList = settings.canvas.GetComponentsInChildren<Menu>(true).ToList();
+            menuList = settings.canvas.GetComponentsInChildren<MenuBase>(true).ToList();
             menuList.ForEach(x => x.Hide());
 
             lastActiveMenu = settings.startingMenu;
             SwitchMenu<MainMenu>(false);
         }
 
-        public void SwitchMenu<T>(bool rememberPrevious = true) where T : Menu
+        public void SwitchMenu<T>(bool rememberPrevious = true) where T : MenuBase
         {
             if (lastActiveMenu != null)
             {
                 lastActiveMenu.Hide();
             }
 
-            Menu desiredMenu = menuList.Find(x => x is T);
+            MenuBase desiredMenu = menuList.Find(x => x is T);
 
             if (desiredMenu != null)
             {
@@ -47,7 +47,7 @@ namespace Trivia
             else { Debug.LogWarning("The desired menu was not found!"); }
         }
 
-        public void SwitchMenu(Menu menu, bool rememberPrevious = true)
+        public void SwitchMenu(MenuBase menu, bool rememberPrevious = true)
         {
             if (lastActiveMenu != null)
             {
@@ -76,7 +76,7 @@ namespace Trivia
         public class Settings
         {
             public Transform canvas;
-            public Menu startingMenu;
+            public MenuBase startingMenu;
         }
     }
 }

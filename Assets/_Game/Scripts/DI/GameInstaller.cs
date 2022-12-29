@@ -19,6 +19,10 @@ namespace Trivia
                 .AsSingle()
                 .WithArguments(quesitonManagerSettings)
                 .NonLazy();
+
+            Container.Bind<LeaderboardApiClient>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
