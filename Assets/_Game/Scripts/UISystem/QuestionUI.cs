@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using DG.Tweening;
 
 namespace Trivia
 {
@@ -7,8 +9,10 @@ namespace Trivia
     {
         [SerializeField] TextMeshProUGUI questionTMP;
 
+        [Header("Banners")]
         [SerializeField] GameObject correctBanner;
         [SerializeField] GameObject incorrectBanner;
+        [SerializeField] GameObject timeOutBanner;
 
         [SerializeField] AnswerUI[] answerUIComponents = new AnswerUI[4];
 
@@ -17,11 +21,13 @@ namespace Trivia
         private void OnEnable()
         {
             EventManager.AnswerClickedEvent += OnAnswerClicked;
+            EventManager.TimeOutEvent += OnTimeOut;
         }
 
         private void OnDisable()
         {
             EventManager.AnswerClickedEvent -= OnAnswerClicked;
+            EventManager.TimeOutEvent -= OnTimeOut;
         }
 
         public void UpdataUI(QuestionSO questionSO)
@@ -76,6 +82,13 @@ namespace Trivia
             {
                 incorrectBanner.SetActive(true);
             }
+        }
+
+        private void OnTimeOut()
+        {
+            EventManager.ScoreLost(3);
+
+            timeOutBanner.SetActive(true);
         }
     }
 }

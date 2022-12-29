@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
 using Zenject;
+using TMPro;
 
 namespace Trivia
 {
@@ -14,8 +15,11 @@ namespace Trivia
         [SerializeField] private Ease spinEase;
         [SerializeField] private int spinAmount;
 
+        [Header("Buttons")]
         [SerializeField] private Button spinButton;
         [SerializeField] private Button playButton;
+
+        [SerializeField] private TextMeshProUGUI categoryTMP;
 
         private QuestionManager questionManager;
         private List<string> categories;
@@ -53,8 +57,17 @@ namespace Trivia
         {
             EventManager.LoadNewQuestion(category);
 
-            playButton.gameObject.transform.DOScale(Vector3.one, 0.5f)
-                .SetEase(Ease.OutBack);
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(playButton.gameObject.transform.DOScale(Vector3.one, 0.5f)
+                .SetEase(Ease.OutBack));
+
+            sequence.Join(categoryTMP.gameObject.transform.DOScale(Vector3.one, 0.5f)
+                .OnStart(() =>
+                {
+                    categoryTMP.text = Utils.GenerateCategoryDisplayName(category);
+                })
+                .SetEase(Ease.OutBack));
         }
 
         private string DetectLandedCategory(float angle)
@@ -72,7 +85,10 @@ namespace Trivia
         private void Reset()
         {
             spinButton.interactable = true;
+
             playButton.gameObject.transform.localScale = Vector3.zero;
+            categoryTMP.gameObject.transform.localScale = Vector3.zero;
+
             wheel.localEulerAngles = Vector3.zero;
         }
     }

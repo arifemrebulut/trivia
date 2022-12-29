@@ -9,11 +9,13 @@ namespace Trivia
         public static Action<string> LoadNewQuestionEvent;
         public static Action<int> ScoreEarnedEvent;
         public static Action<int> ScoreLostEvent;
+        public static Action TimeOutEvent;
 
         public static void AnswerClicked(string choise) => AnswerClickedEvent?.Invoke(choise);
         public static void CorrectAnswerChecked(string correctAnswer) => CorrectAnswerCheckedEvent?.Invoke(correctAnswer);
         public static void LoadNewQuestion(string category) => LoadNewQuestionEvent?.Invoke(category);
         public static void ScoreEarned(int earnAmount) => ScoreEarnedEvent?.Invoke(earnAmount);
         public static void ScoreLost(int lostAmount) => ScoreLostEvent?.Invoke(lostAmount);
+        public static void TimeOut() => TimeOutEvent?.Invoke();
     }
 }
