@@ -24,11 +24,13 @@ namespace Trivia
             StartCoroutine(TimerCoroutine());
 
             EventManager.AnswerClickedEvent += StopTimer;
+            EventManager.NewQuestionLoadedEvent += ResetTimer;
         }
 
         private void OnDisable()
         {
             EventManager.AnswerClickedEvent -= StopTimer;
+            EventManager.NewQuestionLoadedEvent -= ResetTimer;
         }
 
         private IEnumerator TimerCoroutine()
@@ -58,6 +60,18 @@ namespace Trivia
             StopAllCoroutines();
 
             canWork = false;
+        }
+
+        private void ResetTimer(QuestionSO question)
+        {
+            StopAllCoroutines();
+
+            remainingTime = initialTime;
+            canWork = true;
+
+            UpdateUI();
+
+            StartCoroutine(TimerCoroutine());
         }
     }
 }
