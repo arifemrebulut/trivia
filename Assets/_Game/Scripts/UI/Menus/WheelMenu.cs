@@ -45,6 +45,7 @@ namespace Trivia
 
         private void Spin()
         {
+            SpinButtonTween();
 
             categoryTMP.gameObject.transform.localScale = Vector3.zero;
             categoryTMP.text = string.Empty;
@@ -84,6 +85,11 @@ namespace Trivia
             float anglePerCagetory = 360f / categories.Count;
 
             return categories[(int)(angle / anglePerCagetory)];
+        }
+
+        private void SpinButtonTween()
+        {
+            spinButton.transform.DOPunchScale(Vector3.one * 0.2f, 0.3f);
         }
 
         private void OnDisable()
