@@ -18,6 +18,7 @@ namespace Trivia
         private int previousScore;
         private int totalScore;
 
+        #region Subscribe - Unsubscrive Events
         private void OnEnable()
         {
             EventManager.ScoreEarnedEvent += EarnScore;
@@ -31,6 +32,7 @@ namespace Trivia
             EventManager.ScoreLostEvent -= LostScore;
 
         }
+        #endregion
 
         private void Start()
         {

@@ -14,7 +14,7 @@ namespace Trivia
 
         private bool canWork;
 
-        private void OnEnable()
+        private void Start()
         {
             remainingTime = initialTime;
             canWork = true;
@@ -22,7 +22,11 @@ namespace Trivia
             UpdateUI();
 
             StartCoroutine(TimerCoroutine());
+        }
 
+        #region Subscribe - Unsubscribe Events
+        private void OnEnable()
+        {
             EventManager.AnswerClickedEvent += StopTimer;
             EventManager.NewQuestionLoadedEvent += ResetTimer;
         }
@@ -32,6 +36,7 @@ namespace Trivia
             EventManager.AnswerClickedEvent -= StopTimer;
             EventManager.NewQuestionLoadedEvent -= ResetTimer;
         }
+        #endregion
 
         private IEnumerator TimerCoroutine()
         {

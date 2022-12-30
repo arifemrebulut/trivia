@@ -24,6 +24,7 @@ namespace Trivia
         private QuestionManager questionManager;
         private UIManager uiManager;
 
+        #region Subscribe - Unsubscribe Events
         private void OnEnable()
         {
             EventManager.NewQuestionLoadedEvent += UpdataUI;
@@ -37,6 +38,7 @@ namespace Trivia
             EventManager.AnswerClickedEvent -= OnAnswerClicked;
             EventManager.TimeOutEvent -= OnTimeOut;
         }
+        #endregion
 
         [Inject]
         private void Constract(QuestionManager _questionManager, UIManager _uiManager)

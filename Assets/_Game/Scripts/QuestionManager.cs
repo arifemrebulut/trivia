@@ -22,6 +22,7 @@ namespace Trivia
             settings.configurationSO.categories.ForEach(x => Categories.Add(x.categoryName));
         }
 
+        #region Subcsribe - Unsubscribe Events
         public void Initialize()
         {
             EventManager.LoadNewQuestionEvent += LoadNewQuestion;
@@ -31,6 +32,7 @@ namespace Trivia
         {
             EventManager.LoadNewQuestionEvent -= LoadNewQuestion;
         }
+        #endregion
 
         private void LoadNewQuestion(string _categoryName)
         {
