@@ -29,6 +29,8 @@ namespace Trivia
         {
             EventManager.AnswerClickedEvent += StopTimer;
             EventManager.NewQuestionLoadedEvent += ResetTimer;
+
+            ResetTimer(null);
         }
 
         private void OnDisable()
@@ -75,7 +77,6 @@ namespace Trivia
             canWork = true;
 
             UpdateUI();
-
             StartCoroutine(TimerCoroutine());
         }
     }
