@@ -87,28 +87,24 @@ namespace Trivia
 
             if (answerCorrect)
             {
-                EventManager.ScoreEarned(10);
-
                 OnCorrect();
             }
             else
             {
-                EventManager.ScoreLost(5);
-
                 OnIncorrect();
             }
         }
 
         private void OnCorrect()
         {
-            EventManager.ScoreEarned(10);
+            EventManager.ScoreEarned(questionManager.QuestionSettings.correctAnswerPoint);
 
             TweenBanner(correctBanner.transform, () => EventManager.LoadNewQuestion(currentCategory));
         }
 
         private void OnIncorrect()
         {
-            EventManager.ScoreLost(5);
+            EventManager.ScoreLost(questionManager.QuestionSettings.incorrectAnswerPoint);
 
             TweenBanner(incorrectBanner.transform, () =>
                 {
@@ -121,7 +117,7 @@ namespace Trivia
 
         private void OnTimeOut()
         {
-            EventManager.ScoreLost(3);
+            EventManager.ScoreLost(questionManager.QuestionSettings.timeOutPoint);
 
             TweenBanner(timeOutBanner.transform, () =>
                 {

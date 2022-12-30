@@ -85,9 +85,9 @@ namespace Trivia
 
             if (totalScore > previousScore)
             {
-                while (previousScore + 1 < totalScore)
+                while (previousScore + 1 <= totalScore)
                 {
-                    yield return new WaitForSeconds(1f / 10f);
+                    yield return new WaitForSeconds(1f / 15f);
 
                     previousScore++;
 
@@ -96,9 +96,9 @@ namespace Trivia
             }
             else
             {
-                while (previousScore - 1 > totalScore)
+                while (previousScore - 1 >= totalScore)
                 {
-                    yield return new WaitForSeconds(1f / 10f);
+                    yield return new WaitForSeconds(1f / 15f);
 
                     previousScore--;
 

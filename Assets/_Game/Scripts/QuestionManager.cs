@@ -8,7 +8,7 @@ namespace Trivia
 {
     public class QuestionManager : IInitializable, IDisposable
     {
-        private Settings settings;
+        public Settings QuestionSettings { get; private set; }
 
         public QuestionSO CurrentQuestion { get; private set; }
         public string CurrentCategory { get; private set; }
@@ -16,10 +16,10 @@ namespace Trivia
 
         public QuestionManager(Settings _settings)
         {
-            settings = _settings;
+            QuestionSettings = _settings;
 
             Categories = new List<string>();
-            settings.configurationSO.categories.ForEach(x => Categories.Add(x.categoryName));
+            QuestionSettings.configurationSO.categories.ForEach(x => Categories.Add(x.categoryName));
         }
 
         #region Subcsribe - Unsubscribe Events
@@ -53,7 +53,7 @@ namespace Trivia
                 CurrentCategory = _categoryName;
             }
 
-            List<QuestionSO> questionsInCategory = settings.configurationSO.categories
+            List<QuestionSO> questionsInCategory = QuestionSettings.configurationSO.categories
                 .FirstOrDefault(category => category.categoryName == _categoryName).questions;
 
             if (questionsInCategory != null)
@@ -71,6 +71,11 @@ namespace Trivia
         {
             public QuestionUI questionUI;
             public QuestionsConfigurationSO configurationSO;
+
+            [Header("Points")]
+            public int correctAnswerPoint;
+            public int incorrectAnswerPoint;
+            public int timeOutPoint;
         }
 
     }
