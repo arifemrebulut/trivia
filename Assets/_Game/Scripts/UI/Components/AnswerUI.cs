@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Trivia
 {
@@ -57,22 +58,25 @@ namespace Trivia
 
         public void CheckForAnswer(string correctChoise)
         {
-            if (choise == correctChoise && chosed)
+            if (choise == correctChoise)
             {
                 EnableHighligt(true);
             }
 
-            if(choise != correctChoise && chosed)
+            if (choise != correctChoise && chosed)
             {
+
                 EnableHighligt(false);
-            }
 
-            if(choise == correctChoise && !chosed)
-            {
-                EnableHighligt(true);
+                IncorrectShake();
             }
 
             DisableInteractable();
+        }
+
+        public void IncorrectShake()
+        {
+            transform.DOShakeRotation(0.4f, 25f, 10, 30);
         }
 
         public void Reset()
