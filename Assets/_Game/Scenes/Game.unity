@@ -4874,6 +4874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreTMP: {fileID: 673802509}
+  scoreIcon: {fileID: 527088392}
   pausePopUp: {fileID: 1265588087}
   pauseButton: {fileID: 900275341}
   mainMenuButton: {fileID: 1265588086}

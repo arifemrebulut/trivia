@@ -2,12 +2,14 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Trivia
 {
     public class GameMenu : MenuBase
     {
         [SerializeField] private TextMeshProUGUI scoreTMP;
+        [SerializeField] private Transform scoreIcon;
 
         [Header("Pause PopUp Settings")]
         [SerializeField] private GameObject pausePopUp;
@@ -78,6 +80,9 @@ namespace Trivia
 
         private IEnumerator AnimateScoreText()
         {
+            scoreIcon.DOPunchScale(new Vector3(0.3f, 0.3f, 0.3f), 0.3f);
+            scoreIcon.DOShakeRotation(0.4f, 25f, 10, 30);
+
             if (totalScore > previousScore)
             {
                 while (previousScore + 1 < totalScore)
