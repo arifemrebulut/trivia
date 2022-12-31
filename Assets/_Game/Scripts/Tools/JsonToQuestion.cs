@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEditor;
 using SimpleJSON;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Trivia
 {
-    public class JsonToQuestion : MonoBehaviour
+    public static class JsonToQuestion
     {
         [MenuItem("Tools/JsonToQuestionSO")]
         static void JsonToQuestionSO()
@@ -16,8 +18,14 @@ namespace Trivia
 
             #region QuestionSO Generation
             // Read json and parse it.
-            string json = Resources.Load<TextAsset>("questions").text;
-            
+            //string json = Resources.Load<TextAsset>("questions").text;
+            var json = EditorUtility.OpenFilePanel("Select Json File", "", "json");
+
+            using (StreamReader reader = new StreamReader(json))
+            {
+                json = reader.ReadToEnd();
+            }
+
             JSONNode node = JSON.Parse(json);
 
             JSONArray questions = node["questions"].AsArray;
@@ -62,6 +70,19 @@ namespace Trivia
 
             QuestionsConfigurationSO configurationFile = Resources.Load<QuestionsConfigurationSO>(configurationFileName);
 
+            if (configurationFile == null)
+            {
+                configurationFile = ScriptableObject.CreateInstance<QuestionsConfigurationSO>();
+
+                string fileName = configurationFileName + ".asset";
+
+                string path = "Assets/Resources/" + fileName;
+
+                AssetDatabase.CreateAsset(configurationFile, path);
+
+                Debug.Log("QuestionsConfiguraiton file created at : " + "Assets/Resources");
+            }
+
             List<QuestionsConfigurationSO.Category> categories = new List<QuestionsConfigurationSO.Category>();
 
             foreach (var categoryName in categoryNamesSet)
@@ -86,7 +107,7 @@ namespace Trivia
             #endregion
 
             Debug.Log("Generation Finished");
-            Debug.Log("File's path : " + "Assets/_Game/ScriptableObjects");
+            Debug.Log("File's path : " + "Assets/_Game/ScriptableObjects/Questions");
         }
     }
 }
